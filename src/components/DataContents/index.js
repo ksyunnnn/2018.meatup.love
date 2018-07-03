@@ -30,16 +30,59 @@ const sample = {
   ],
 };
 
+const genderFormatter = v => {
+  const { male, female } = v;
+  const rt = {
+    labels: ['男性','女性'],
+    datasets: [
+      {
+        data: [male,female],
+        backgroundColor: ['#36A2EB', '#FF6384',],
+        hoverBackgroundColor: ['#36A2EB', '#FF6384',],
+      },
+    ],
+  }
+  return rt;
+}
+
+const rollsFormatter = v => {
+  const { rolls } = v;
+  console.log("rolls is ",rolls);
+  const rt = {
+    labels: [],
+    datasets: [
+      {
+        data: [],
+        backgroundColor: ['#36A2EB', '#FF6384','#36A2EB', '#FF6384','#36A2EB', '#FF6384','#36A2EB', '#FF6384','#36A2EB', '#FF6384',],
+        hoverBackgroundColor: ['#36A2EB', '#FF6384','#36A2EB', '#FF6384','#36A2EB', '#FF6384','#36A2EB', '#FF6384','#36A2EB', '#FF6384',],
+      },
+    ],
+  }
+  if(rolls){
+    const labels = [];
+    const cnts = [];
+    rolls.map(v=>{
+      labels.push(v.label);
+      cnts.push(v.cnt);
+    });
+    rt.labels = labels;
+    console.log('labels',labels);
+    rt.datasets[0].data = cnts;
+  }
+  return rt;
+}
+
 export default props => {
   const { information } = props;
-  console.log(information);
+  console.log('information',information);
   return (
     <DataContainer>
       {/*information.rolls.map((v,i)=>{
         console.log(v)
         return <span key={i}>{v.roll}</span>
       })*/}
-      <Chart type="pie" data={sample} />
+      <Chart type="pie" data={genderFormatter(information)} />
+      <Chart type="pie" data={rollsFormatter(information)} />
     </DataContainer>
   );
 };
