@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
-import styled from "styled-components";
+import styled from 'styled-components';
 
-import { Colors } from "../../variables";
+import { Colors } from '../../variables';
 import { media } from '../../helpers/media-query';
 
-import {
-  Anchor,
- } from '../styled-components';
+import { Anchor } from '../styled-components';
 
 const InformationContainer = styled.div`
   min-height: 92vh;
@@ -19,12 +17,13 @@ const InformationContainer = styled.div`
   ${media.phone`
     width: 100%;
     margin-bottom: 40px;
-  `}
+  `};
 `;
 
 const info = [
   {
-    anchor: 'https://calendar.google.com/event?action=TEMPLATE&tmeid=MzNwZ2JoZDVvaGxkMTRuY2hxOWhraGNoOG4gaXMuc3l1bnN1a2Vrb2Jhc2hpQG0&tmsrc=is.syunsukekobashi%40gmail.com',
+    anchor:
+      'https://calendar.google.com/event?action=TEMPLATE&tmeid=MzNwZ2JoZDVvaGxkMTRuY2hxOWhraGNoOG4gaXMuc3l1bnN1a2Vrb2Jhc2hpQG0&tmsrc=is.syunsukekobashi%40gmail.com',
     icon: 'calendar plus outline icon',
     contents: <span>2018/07/22 Sun.</span>,
   },
@@ -38,22 +37,21 @@ const info = [
     icon: 'hashtag icon',
     contents: <span>meatup2018</span>,
   },
-]
+];
 
 const Information = props => (
   <div>
     <Anchor target="_blank" href={props.anchor}>
-      <i className={props.icon}></i>{props.contents}
+      <i className={props.icon} />
+      {props.contents}
     </Anchor>
   </div>
-)
+);
 
-export default (props) => {
+export default props => {
   return (
     <InformationContainer id="information">
-      {info.map(
-        (v,i)=><Information key={i} {...v}/>
-      )}
+      {info.map((v, i) => <Information key={i} {...v} />)}
     </InformationContainer>
   );
-}
+};

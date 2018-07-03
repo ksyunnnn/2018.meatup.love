@@ -1,5 +1,5 @@
-import styled, {injectGlobal} from "styled-components";
-import { Colors } from "../variables";
+import styled, { injectGlobal } from 'styled-components';
+import { Colors } from '../variables';
 import { media } from '../helpers/media-query';
 
 injectGlobal`
@@ -24,16 +24,16 @@ export const GlobalWrapper = styled.div`
   overflow-y: scroll;
   -ms-overflow-style: none;
   ::-webkit-scrollbar {
-  display: none;
+    display: none;
   }
   ${media.phone`
     padding-bottom: 0;
-  `}
+  `};
 `;
 
 export const FlexWrapper = styled.div`
   display: flex;
-  justify-content: ${props => props.between?'space-between':'none'};
+  justify-content: ${props => (props.between ? 'space-between' : 'none')};
 `;
 
 export const Image = styled.img`
@@ -46,7 +46,8 @@ export const Anchor = styled.a`
   background: #eee;
   padding: 2px;
   border-radius: 2px;
-  :hover, :active {
+  :hover,
+  :active {
     background: #ccc;
     color: inherit;
   }

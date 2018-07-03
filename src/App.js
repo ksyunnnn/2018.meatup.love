@@ -7,7 +7,7 @@ import DataContents from './components/DataContents';
 
 import { Transition } from 'semantic-ui-react';
 
-const getInformation = (data) => {
+const getInformation = data => {
   const rt = {
     male: 0,
     female: 0,
@@ -15,24 +15,24 @@ const getInformation = (data) => {
     rolls: [],
   };
 
-  const gender = data.filter(v => v.property=="gender");
+  const gender = data.filter(v => v.property == 'gender');
 
-  gender.map(v=>{
-    if(v.label=='男性')rt.male = v.cnt;
-    if(v.label=='女性')rt.female = v.cnt;
-  })
+  gender.map(v => {
+    if (v.label == '男性') rt.male = v.cnt;
+    if (v.label == '女性') rt.female = v.cnt;
+  });
 
-  const jobs = data.filter(v => v.property=="job");
+  const jobs = data.filter(v => v.property == 'job');
 
-  jobs.map(v=>{
+  jobs.map(v => {
     rt.jobs.push(v.label);
-  })
+  });
 
-  const rolls = data.filter(v => v.property=="roll");
+  const rolls = data.filter(v => v.property == 'roll');
 
-  rolls.map(v=>{
+  rolls.map(v => {
     delete v.property;
-  })
+  });
 
   rt.rolls = rolls;
 
@@ -71,7 +71,7 @@ class App extends Component {
         result => {
           this.setState({
             isLoaded: true,
-            information: getInformation(result.filter(v => v.property!=="ignore")),
+            information: getInformation(result.filter(v => v.property !== 'ignore')),
           });
         },
         error => {
@@ -87,10 +87,7 @@ class App extends Component {
     const { top, info } = this.state.visibles;
     return (
       <GlobalWrapper>
-        <TopContents
-          visibles={this.state.visibles}
-          toggleVisibles={this.toggleVisibles}
-        />
+        <TopContents visibles={this.state.visibles} toggleVisibles={this.toggleVisibles} />
         <InformationContents />
         <DataContents information={this.state.information} />
       </GlobalWrapper>
