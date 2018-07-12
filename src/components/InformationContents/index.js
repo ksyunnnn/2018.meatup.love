@@ -15,8 +15,13 @@ const InformationContainer = styled.div`
   box-sizing: border-box;
   width: 100%;
   ${media.phone`
+    text-align: left;
+    min-height: auto;
     width: 100%;
     margin-bottom: 40px;
+    padding: 24px 0;
+    font-size: 5vw;
+    line-height: 3;
   `};
 `;
 
@@ -31,6 +36,12 @@ const info = [
     anchor: 'https://goo.gl/maps/9dAeXLPXhJ22',
     icon: 'map marker alternate icon',
     contents: <span>世田谷区駒沢2-33-7 ( JamHouse 天照 )</span>,
+  },
+  {
+    anchor:
+      'https://kyash.me/payments/pcVdAvhlK1RcdxC96ZzoVgDcX4g6',
+    icon: 'yen sign icon',
+    contents: <span>2,000円</span>,
   },
   {
     anchor: 'http://twitter.com/hashtag/meatup2018',
@@ -52,6 +63,12 @@ export default props => {
   return (
     <InformationContainer id="information">
       {info.map((v, i) => <Information key={i} {...v} />)}
+      <div>
+        <Anchor href="/#schedule">
+          <i className='time icon' />
+          <span>13:00 or 16:00</span>
+        </Anchor>
+      </div>
     </InformationContainer>
   );
 };

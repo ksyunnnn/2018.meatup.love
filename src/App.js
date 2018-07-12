@@ -4,6 +4,7 @@ import { GlobalWrapper } from './components/styled-components';
 import TopContents from './components/TopContents';
 import InformationContents from './components/InformationContents';
 import DataContents from './components/DataContents';
+import ScheduleContents from './components/ScheduleContents';
 
 import { Transition } from 'semantic-ui-react';
 
@@ -90,6 +91,7 @@ class App extends Component {
         <TopContents visibles={this.state.visibles} toggleVisibles={this.toggleVisibles} />
         <InformationContents />
         <DataContents information={this.state.information} />
+        <ScheduleContents />
       </GlobalWrapper>
     );
   }
