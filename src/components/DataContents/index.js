@@ -8,6 +8,9 @@ import { media } from '../../helpers/media-query';
 
 import { Anchor } from '../styled-components';
 
+import { Statistic } from 'semantic-ui-react'
+
+
 const DataContainer = styled.div`
   min-height: 92vh;
   line-height: 8vh;
@@ -18,17 +21,6 @@ const DataContainer = styled.div`
     margin-bottom: 40px;
   `};
 `;
-
-const sample = {
-  labels: ['エンジニア', 'デザイナー', '学生'],
-  datasets: [
-    {
-      data: [300, 50, 100],
-      backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
-      hoverBackgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
-    },
-  ],
-};
 
 const genderFormatter = v => {
   const { male, female } = v;
@@ -72,17 +64,50 @@ const rollsFormatter = v => {
   return rt;
 }
 
+class CountableStatistic extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      count: 0,
+    };
+  }
+
+  countUp = (exec,max) => {
+    let count = 0;
+    const countHandle = setInterval(()=>{
+      exec();
+      if(count++>max-2)clearInterval(countHandle);
+    },50);
+  }
+
+  componentDidMount() {
+
+    this.countUp(
+      ()=>{
+        this.setState(prevState => ({
+          count: prevState.count+ 1,
+        }));
+      },this.props.max);
+
+  }
+
+  render() {
+    return (<Statistic label='Downloads' value={this.state.count} />)
+  }
+}
+
 export default props => {
   const { information } = props;
-  console.log('information',information);
+  console.log("formated",rollsFormatter(information))
   return (
-    <DataContainer>
+    <DataContainer id="data">
       {/*information.rolls.map((v,i)=>{
         console.log(v)
         return <span key={i}>{v.roll}</span>
       })*/}
       <Chart type="pie" data={genderFormatter(information)} />
-      <Chart type="pie" data={rollsFormatter(information)} />
+      <CountableStatistic max={300}/>
     </DataContainer>
   );
 };
