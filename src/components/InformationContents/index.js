@@ -38,10 +38,9 @@ const info = [
     contents: <span>世田谷区駒沢2-33-7 ( JamHouse 天照 )</span>,
   },
   {
-    anchor:
-      'https://kyash.me/payments/pcVdAvhlK1RcdxC96ZzoVgDcX4g6',
+    anchor: 'https://kyash.me/payments/pcVdAvhlK1RcdxC96ZzoVgDcX4g6',
     icon: 'yen sign icon',
-    contents: <span>2,000円</span>,
+    contents: <span>2,000円プラス持ち寄り食材</span>,
   },
   {
     anchor: 'http://twitter.com/hashtag/meatup2018',
@@ -62,10 +61,11 @@ const Information = props => (
 export default props => {
   return (
     <InformationContainer id="information">
+      <h1 style={{textAlign:'center'}}>概要</h1>
       {info.map((v, i) => <Information key={i} {...v} />)}
       <div>
         <Anchor href="/#schedule">
-          <i className='time icon' />
+          <i className="time icon" />
           <span>13:00 or 16:00</span>
         </Anchor>
       </div>

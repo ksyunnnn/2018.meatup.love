@@ -23,6 +23,7 @@ export const GlobalWrapper = styled.div`
   box-sizing: border-box;
   overflow-y: scroll;
   -ms-overflow-style: none;
+  -webkit-overflow-scrolling: touch;
   ::-webkit-scrollbar {
     display: none;
   }
@@ -51,4 +52,51 @@ export const Anchor = styled.a`
     background: #ccc;
     color: inherit;
   }
+`;
+
+export const DefaultContainer = styled.div`
+  min-height: 92vh;
+  line-height: 12vh;
+  font-size: 4vh;
+  padding: 28vh 0;
+  text-align: center;
+  box-sizing: border-box;
+  width: 100%;
+  word-wrap: break-word;
+  ${media.phone`
+    text-align: left;
+    min-height: auto;
+    width: 100%;
+    margin-bottom: 40px;
+    padding: 24px 0;
+    font-size: 5vw;
+    line-height: 3;
+  `};
+`;
+
+export const Button = styled.div`
+  position: fixed;
+  bottom: 48px;
+  right: 48px;
+  font-size: 36px;
+  width: 80px;
+  height: 80px;
+  line-height: 80px;
+  border-radius: 50%;
+  -webkit-box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  background-color: #B33D44;
+  color: #fff;
+  font-weight: inherit;
+  text-align: center;
+  cursor: pointer;
+  :hover {
+    background: #a0373d;
+  }
+  ${media.phone`
+    bottom: 24px;
+    right: 24px;
+  `};
 `;

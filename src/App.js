@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { GlobalWrapper } from './components/styled-components';
+import { GlobalWrapper,  DefaultContainer, Button } from './components/styled-components';
 import TopContents from './components/TopContents';
 import InformationContents from './components/InformationContents';
 import DataContents from './components/DataContents';
@@ -92,6 +92,16 @@ class App extends Component {
         <InformationContents />
         <DataContents information={this.state.information} />
         <ScheduleContents />
+
+        <DefaultContainer>
+          <h1 style={{textAlign:'center'}}>支払い方法</h1>
+          <div>送金アプリ「Kyash」を利用ください</div>
+          <small>※送金後、運営に連絡を<b>必ず</b>行ってください🙇</small>
+          <div><a target="_blank" href="https://kyash.me/payments/pcVdAvhlK1RcdxC96ZzoVgDcX4g6">https://kyash.me/payments/pcVdAvhlK1RcdxC96ZzoVgDcX4g6</a></div>
+        </DefaultContainer>
+
+        <Button onClick={()=>window.open('https://m.me/ksyunnnn')}><i className="facebook messenger icon"></i></Button>
+
       </GlobalWrapper>
     );
   }

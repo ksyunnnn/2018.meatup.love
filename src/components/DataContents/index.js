@@ -74,20 +74,22 @@ export default props => {
   const { information } = props;
   return (
     <DataContainer id="data">
-      <h1>現在の参加者</h1>
+      <h1 style={{textAlign:'center'}}>現在の参加者</h1>
       <CountableStatisticContainer>
-        {information.rolls?
-          information.rolls.map((v,i)=>(
-            <CountableStatisticWrapper key={i}><CountableStatistic max={v.cnt} label={v.label}/></CountableStatisticWrapper>
+        {information.rolls ? (
+          information.rolls.map((v, i) => (
+            <CountableStatisticWrapper key={i}>
+              <CountableStatistic max={v.cnt} label={v.label} />
+            </CountableStatisticWrapper>
           ))
-          :<Loader active>Loading</Loader>
-        }
+        ) : (
+          <Loader active>Loading</Loader>
+        )}
       </CountableStatisticContainer>
 
       <ChartContainer>
         <Chart type="pie" data={genderFormatter(information)} />
       </ChartContainer>
-
     </DataContainer>
   );
 };
